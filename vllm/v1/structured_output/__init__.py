@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import multiprocessing
+# import time
 from concurrent.futures import ThreadPoolExecutor
 from typing import TYPE_CHECKING, Optional
 
@@ -86,8 +87,11 @@ class StructuredOutputManager:
             else:
                 raise ValueError(
                     f"Unsupported structured output backend: {backend}")
-
+        # start_time = time.time()
         grammar = self.executor.submit(self._async_create_grammar, request)
+        # end_time = time.time()
+        # if grammar is not None:
+        #     logger.info(f"Grammar creation init time: {end_time - start_time}, request: {request.request_id}")
         request.structured_output_request.grammar = grammar  # type: ignore[assignment]
 
     def _async_create_grammar(

@@ -281,9 +281,9 @@ def validate_xgrammar_grammar(sampling_params: SamplingParams) -> None:
             raise ValueError("Failed to transform json schema into a grammar: "
                              f"{err}") from err
 
-        if has_xgrammar_unsupported_json_features(schema):
-            raise ValueError("The provided JSON schema contains features not "
-                             "supported by xgrammar.")
+        # if has_xgrammar_unsupported_json_features(schema):
+        #     raise ValueError("The provided JSON schema contains features not "
+        #                      "supported by xgrammar.")
         return
 
     if gd_params.grammar:
