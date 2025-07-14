@@ -344,7 +344,7 @@ class Scheduler(SchedulerInterface):
                     if structured_output_req and structured_output_req.grammar:
                         request.status = RequestStatus.WAITING
                     else:
-                        logger.info(f"Skipping request {request.request_id} because it is waiting for FSM compilation")
+                        # logger.info(f"Skipping request {request.request_id} because it is waiting for FSM compilation")
                         self.waiting.popleft()
                         skipped_waiting_requests.appendleft(request)
                         continue
@@ -517,7 +517,7 @@ class Scheduler(SchedulerInterface):
             scheduled_spec_decode_tokens,
         )
         end_time = time.time()
-        logger.info(f"Grammar bitmask time: {end_time - start_time}, requests: {len(self.requests)}, structured_output_request: {len(structured_output_request_ids)}, total_scheduled_tokens: {total_num_scheduled_tokens} ({len(num_scheduled_tokens)}), num_scheduled_tokens: {[num_scheduled_tokens[req_id] for req_id in num_scheduled_tokens]}")
+        # logger.info(f"Grammar bitmask time: {end_time - start_time}, requests: {len(self.requests)}, structured_output_request: {len(structured_output_request_ids)}, total_scheduled_tokens: {total_num_scheduled_tokens} ({len(num_scheduled_tokens)}), num_scheduled_tokens: {[num_scheduled_tokens[req_id] for req_id in num_scheduled_tokens]}")
         # Construct the scheduler output.
         new_reqs_data = [
             NewRequestData.from_request(req,
